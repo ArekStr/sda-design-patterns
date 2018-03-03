@@ -9,6 +9,8 @@ public class Reservation {
     private double price;
 
     private Reservation() {
+
+
     }
 
     public LocalDate getDate() {
@@ -43,7 +45,7 @@ public class Reservation {
         this.price = price;
     }
 
-
+// metoda do wystawienia buildera na zewnatrz
     public static ReservationBuilder builder(){
         return new ReservationBuilder();
     }

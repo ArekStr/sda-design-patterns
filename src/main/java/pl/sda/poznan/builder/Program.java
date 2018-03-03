@@ -2,8 +2,9 @@ package pl.sda.poznan.builder;
 
 public class Program {
     public static void main(String[] args) {
-        Reservation reservation = new Reservation();
-        reservation.setCity("poznan");
-        reservation.setHeadcount(199);
+        String toParse = "    // Date, 2018-02-12, Headcount 250, City, Poznan, Price, 100";
+        Reservation myReservation= ReservationParser.parse(toParse);
+        System.out.println(myReservation);
+
     }
 }
