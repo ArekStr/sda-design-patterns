@@ -6,6 +6,8 @@ import pl.sda.poznan.factory.writer.CompanyWriter;
 import pl.sda.poznan.factory.writer.TxtCompanyWriter;
 import pl.sda.poznan.factory.writer.XmlCompanyWriter;
 
+import java.util.Scanner;
+
 public class App {
 
     //utworz klase Employee przech dane o pracowniach
@@ -14,14 +16,24 @@ public class App {
     // jak zareprezentowac fakt, ze firma ma pracownikow ?
     public static void main(String[] args) {
         Employee director = new Employee("Jan", "Nowak", "nowak@gmail.com", 100000);
-       Employee kierownik = new Employee("Marek", "Kowalski", "kowalski@gmail.com", 2000);
+        Employee kierownik = new Employee("Marek", "Kowalski", "kowalski@gmail.com", 2000);
 
         Company company = new Company();
         company.addEmployee(director);
         company.addEmployee(kierownik);
 
-        CompanyWriter writer= new XmlCompanyWriter("firma.xml");
-        writer.write(company);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("podaj nazwe pluku, do ktorego chcesz zapisac:")
+        ;
+
+        String filename = scanner.next();
+        CompanyWriterFactory companyWriterFactory = new CompanyWriterFactory();
+        try {
+            CompanyWriter writer = companyWriterFactory.create(filename);
+            writer.write(company);
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
 
 
     }
