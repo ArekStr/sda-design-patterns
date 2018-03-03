@@ -2,7 +2,7 @@ package pl.sda.poznan.builder;
 
 import java.time.LocalDate;
 
-public class Playgroung {
+public class Playground {
     public static void main(String[] args) {
         //   Reservation reservation = new Reservation();
         // reservation.setCity("poznan");
